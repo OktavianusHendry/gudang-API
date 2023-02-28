@@ -25,7 +25,7 @@ async function signin(req, res) {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (user.length != 0) {
-      const isPassword = await compare(password, user.dataValues.password);
+      const isPassword = await compare(password, user.password);
       if (isPassword) {
         const accessToken = sign(
           {
