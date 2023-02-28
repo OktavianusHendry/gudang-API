@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV || 'development';
 const db = {};
 
 let sequelize;
-  sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD, {   host: process.env.HOST,   dialect: 'postgres',   logging: false,   dialectOptions: {     ssl: {       require: true,       rejectUnauthorized: false     }   }});
+  sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD, process.env.HOST,{   dialect: 'postgres',   logging: false,   dialectOptions: {     ssl: {       require: true,       rejectUnauthorized: false     }   }});
 
 
 fs
