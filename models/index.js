@@ -8,8 +8,19 @@ const env = process.env.NODE_ENV || 'development';
 const db = {};
 
 let sequelize;
-  sequelize = new Sequelize(process.env.DATABASE_URL, {dialectOptions: {     ssl: {       require: true,       rejectUnauthorized: false     }   }});
 
+try {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialectOptions: {     
+      ssl: {       
+        require: true,
+        rejectUnauthorized: false,
+      }   
+    }
+  });
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 
 fs
   .readdirSync(__dirname)
