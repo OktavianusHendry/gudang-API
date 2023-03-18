@@ -13,6 +13,7 @@ jobs:
       JWT_SECRET: ${{ secrets.JWT_SEC }}
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       PORT: ${{ secrets.PORT }}
+      DIALECT: ${{ secrets.DIALECT }}
 
     steps:
       - name: Checkout code
