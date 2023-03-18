@@ -8,9 +8,6 @@ const env = process.env.NODE_ENV || 'development';
 const db = {};
 
 let sequelize;
-console.log('process.env.DATABASE_URL: ', process.env.DATABASE_URL);
-console.log('process.env.JWT_SEC: ', process.env.JWT_SEC);
-console.log('process.env.PORT: ', process.env.PORT);
 try {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {     
