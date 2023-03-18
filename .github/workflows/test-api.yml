@@ -9,6 +9,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SEC }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      PORT: ${{ secrets.PORT }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,10 +31,11 @@ jobs:
 
       - name: Wait for the server to start
         run: |
-          until curl --fail http://localhost:3000/; do
+          until curl --fail http://localhost:${{ secrets.PORT }}/; do
             echo "Waiting for server to start..."
             sleep 1
           done
+
       - name: Install Newman
         run: npm install -g newman
 
